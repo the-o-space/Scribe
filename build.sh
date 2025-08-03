@@ -51,10 +51,29 @@ concat_files "dist/background.js" \
 # Add JSZip import to the beginning of background.js
 sed -i.bak '3i\
 // Import JSZip at the top level for Manifest V3 compatibility\
-importScripts("../libs/jszip.min.js");\
+importScripts("libs/jszip.min.js");\
 ' dist/background.js
 rm dist/background.js.bak
 
+# Copy additional required files
+echo "Copying manifest.json..."
+cp manifest.json dist/
+
+# Update manifest.json paths in dist
+sed -i.bak 's|"dist/background.js"|"background.js"|g' dist/manifest.json
+rm dist/manifest.json.bak
+
+# Copy icons directory
+echo "Copying icons..."
+cp -r icons dist/
+
+# Copy libs directory
+echo "Copying libs..."
+cp -r libs dist/
+
+# List all files in dist
 echo ""
 echo "✅ Build complete!"
-echo "Files created in dist/ directory"
+echo ""
+echo "Files created in dist/ directory:"
+find dist -type f | sort
