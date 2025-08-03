@@ -1,0 +1,13 @@
+# Dependencies
+libs/jszip.min.js
+
+# Built files
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
