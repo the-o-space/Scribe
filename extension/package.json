@@ -1,0 +1,14 @@
+{
+  "name": "sub-to-pub-extension",
+  "version": "1.2.0",
+  "description": "Chrome extension for converting articles to EPUB format",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "watch": "node build.js --watch",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "esbuild": "^0.19.0"
+  }
+}
