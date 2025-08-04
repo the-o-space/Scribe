@@ -67,7 +67,7 @@ async function downloadEpub(epubBlob, title) {
       chrome.downloads.download({
         url: dataUrl,
         filename: filename,
-        saveAs: true
+        saveAs: false
       }, (downloadId) => {
         if (chrome.runtime.lastError) {
           console.error('Download failed:', chrome.runtime.lastError);

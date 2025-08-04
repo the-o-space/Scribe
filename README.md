@@ -1,134 +1,81 @@
-# Sub-to-Pub Chrome Extension
+# Sub-to-Pub
 
-A Chrome extension that converts web articles from Substack and other platforms to EPUB (pub) format for offline reading. Works with Substack, LessWrong, and other platforms using similar markup structures.
+A Chrome extension and backend service for converting Substack articles to EPUB format.
 
-## Features
+## Repository Structure
 
-- One-click export of articles to EPUB format
-- Works with multiple platforms:
-  - Substack (`div.body.markup`)
-  - LessWrong (`div#postBody`)
-  - Other compatible sites
-- Preserves article formatting and metadata
-- **Downloads and embeds images directly into the EPUB file**
-- Includes article title, author, and publication date
-- Clean, readable EPUB output
-- No popup interface - just click the extension icon
+This is a monorepo containing two main components:
 
-## Installation
+```
+sub-to-pub/
+├── extension/          # Chrome extension for capturing articles
+├── backend/            # Email backend service (coming soon)
+├── docs/               # Shared documentation
+└── scripts/            # Shared scripts
+```
 
-### Quick Setup (Recommended)
+## Components
 
+### Chrome Extension
+The Chrome extension allows users to convert Substack articles directly from their browser into EPUB format.
+
+See [extension/README.md](extension/README.md) for extension-specific documentation.
+
+### Backend Service
+The backend service handles email-based article conversion (coming soon).
+
+See [backend/README.md](backend/README.md) for backend-specific documentation.
+
+## Getting Started
+
+### Full Repository Setup
 ```bash
-./setup.sh
+# Clone the entire repository
+git clone https://github.com/the-o-space/sub-to-pub.git
+cd sub-to-pub
+
+# Setup both components
+./scripts/setup-all.sh
 ```
 
-This script will automatically download JSZip and create necessary files.
+### Working with Individual Components
 
-### Manual Setup
-
-1. Clone this repository or download the source code
-2. Download JSZip library:
-   - Download `jszip.min.js` from https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js
-   - Create a `libs` folder in the extension directory
-   - Place `jszip.min.js` in the `libs` folder
-3. Create icon files (see ICONS_NOTE.md)
-4. Open Chrome and navigate to `chrome://extensions/`
-5. Enable "Developer mode" in the top right corner
-6. Click "Load unpacked" and select the extension directory
-7. The extension icon will appear in your Chrome toolbar
-
-## Usage
-
-1. Navigate to a supported article:
-   - Substack articles (e.g., astralcodexten.com)
-   - LessWrong posts (lesswrong.com)
-   - Other sites with compatible markup
-2. Click the extension icon in your toolbar
-3. The EPUB file will be generated and downloaded automatically
-4. Choose where to save the EPUB file when prompted
-
-## Technical Details
-
-The extension extracts content from web articles by:
-- Finding supported article containers:
-  - `div.body.markup` (Substack and similar)
-  - `div#postBody` (LessWrong)
-- Extracting the page title from the `<title>` tag
-- **Downloading all images and embedding them in the EPUB**
-- Converting the content to EPUB format using proper XHTML structure
-- Detecting author information from various selector patterns
-- Using data URLs for Manifest V3 service worker compatibility
-- Robust HTML-to-XHTML conversion to ensure valid EPUB files
-- Properly escapes special characters in URLs and attributes for XML compliance
-- Storing images in the EPUB's Images folder with proper manifest entries
-
-## File Structure
-
-```
-Sub-to-Pub/
-├── src/                    # Source code (modular)
-│   ├── background/         # Background script modules
-│   │   ├── index.js       # Main background logic
-│   │   ├── epub-generator.js
-│   │   ├── epub-templates.js
-│   │   └── image-downloader.js
-│   ├── content/           # Content script modules
-│   │   ├── index.js       # Main content logic
-│   │   ├── dom-cleaner.js
-│   │   ├── html-converter.js
-│   │   └── metadata-extractor.js
-│   └── utils/             # Shared utilities
-│       ├── xml.js
-│       └── helpers.js
-├── dist/                  # Built files (generated)
-│   ├── background.js
-│   └── content.js
-├── icons/                 # Extension icons
-├── libs/                  # External libraries
-│   └── jszip.min.js      # (not included, see installation)
-├── manifest.json         # Chrome extension manifest
-├── build.sh             # Build script
-└── setup.sh             # Setup script
-
-## Limitations
-
-- Only works on supported article structures:
-  - `div.body.markup` (Substack)
-  - `div#postBody` (LessWrong)
-- Requires manual installation of JSZip library
-- Some complex formatting may not be perfectly preserved
-- No visual feedback during export (check browser downloads)
-- Some images may fail to download due to CORS restrictions
-
-## Development
-
-### Building the Extension
-
-The source code is organized in modular files under `src/`. To build:
-
+#### Extension Only (Git Sparse Checkout)
 ```bash
-./build.sh
+# Clone repository without checking out files
+git clone --no-checkout https://github.com/the-o-space/sub-to-pub.git
+cd sub-to-pub
+
+# Enable sparse checkout
+git sparse-checkout init --cone
+
+# Select only extension directory
+git sparse-checkout set extension
+
+# Checkout the files
+git checkout main
 ```
 
-This will:
-- Concatenate the modular source files
-- Generate `dist/background.js` and `dist/content.js`
-- Update `manifest.json` to use the built files
+#### Backend Only (Git Sparse Checkout)
+```bash
+# Clone repository without checking out files
+git clone --no-checkout https://github.com/the-o-space/sub-to-pub.git
+cd sub-to-pub
 
-### Development Workflow
+# Enable sparse checkout
+git sparse-checkout init --cone
 
-1. Edit files in the `src/` directory
-2. Run `./build.sh` to rebuild
-3. Reload the extension in Chrome (`chrome://extensions/`)
-4. Test your changes
+# Select only backend directory
+git sparse-checkout set backend
 
-### Adding New Features
+# Checkout the files
+git checkout main
+```
 
-- Background functionality: Add to `src/background/`
-- Content extraction: Add to `src/content/`
-- Shared utilities: Add to `src/utils/`
+## Documentation
+
+- [Backend API Specification](docs/BACKEND_API_SPEC.md)
 
 ## License
 
-MIT License
+This project is licensed under the MIT License.

@@ -1,8 +1,21 @@
-# Dependencies
-libs/jszip.min.js
+# Extension dependencies
+extension/libs/jszip.min.js
 
-# Built files
-dist/
+# Extension built files
+extension/dist/
+
+# Backend dependencies
+backend/node_modules/
+backend/package-lock.json
+
+# Backend environment
+backend/.env
+backend/.env.local
+backend/.env.production
+
+# Backend logs
+backend/logs/
+backend/*.log
 
 # OS files
 .DS_Store
@@ -11,3 +24,9 @@ Thumbs.db
 # IDE files
 .vscode/
 .idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*~
