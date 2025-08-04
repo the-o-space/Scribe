@@ -22,9 +22,19 @@ The Chrome extension allows users to convert Substack articles directly from the
 See [extension/README.md](extension/README.md) for extension-specific documentation.
 
 ### Backend Service
-The backend service handles email-based article conversion (coming soon).
+The backend service handles email-based article conversion (NOT IMPLEMENTED YET).
 
 See [backend/README.md](backend/README.md) for backend-specific documentation.
+
+## Installing extension
+
+1. Download the latest release .zip file from [the-o-space/sub-to-pub/releases](https://github.com/the-o-space/sub-to-pub/releases)
+2. Unzip the file and open your favourite chormium browser
+3. Navigate to `chrome://extensions/`
+4. Enable Developer Mode
+5. Click "Load unpacked" and select the unzipped extension folder
+6. You should see the extension icon in the Chrome toolbar
+7. Navigate to any article on the supported sites and click the extension icon to convert the article to EPUB
 
 ## Getting Started
 
@@ -71,10 +81,6 @@ git sparse-checkout set backend
 # Checkout the files
 git checkout main
 ```
-
-## Documentation
-
-- [Backend API Specification](docs/BACKEND_API_SPEC.md)
 
 ## License
 
