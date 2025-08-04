@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Setting up Sub-to-Pub Chrome Extension..."
+echo "Setting up Scribe Chrome Extension..."
 echo ""
 
 # Check if Node.js is installed

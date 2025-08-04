@@ -1,9 +1,9 @@
-# Sub-to-Pub Email Backend API Specification
+# Scribe Email Backend API Specification
 
 ## Overview
-A lightweight backend service for the Sub-to-Pub Chrome extension that handles EPUB email delivery. The service receives EPUB files from the extension and sends them via email to specified recipients.
+A lightweight backend service for the Scribe Chrome extension that handles EPUB email delivery. The service receives EPUB files from the extension and sends them via email to specified recipients.
 
-**Base URL**: `https://backend.sub-to-pub.xn--the-2na.space`
+**Base URL**: `https://backend.scribe.xn--the-2na.space`
 
 ## Architecture
 
@@ -42,7 +42,7 @@ author: string (optional) - Author name
 source_url: string (optional) - Original article URL
 recipient_email: string (required) - Primary recipient
 cc_email: string (optional) - Secondary recipient
-sender_name: string (optional, default: "Sub-to-Pub") - Sender display name
+sender_name: string (optional, default: "Scribe") - Sender display name
 ```
 
 **Validation Rules**:
@@ -56,7 +56,7 @@ sender_name: string (optional, default: "Sub-to-Pub") - Sender display name
 {
   "success": true,
   "message": "Email sent successfully",
-  "messageId": "abc123@backend.sub-to-pub.xn--the-2na.space",
+  "messageId": "abc123@backend.scribe.xn--the-2na.space",
   "recipients": ["user@example.com", "cc@example.com"]
 }
 ```
@@ -136,7 +136,7 @@ const allowedOrigins = [
 
 ### Subject Line
 ```
-[Sub-to-Pub] {title} - EPUB Ready
+[Scribe] {title} - EPUB Ready
 ```
 
 ### HTML Email Body
@@ -176,7 +176,7 @@ const allowedOrigins = [
             <p>The EPUB file is attached to this email. You can open it with any EPUB reader.</p>
         </div>
         <div class="footer">
-            <p>Sent by Sub-to-Pub Chrome Extension</p>
+            <p>Sent by Scribe Chrome Extension</p>
             <p>Convert any article to EPUB format</p>
         </div>
     </div>
@@ -198,7 +198,7 @@ Generated: {timestamp}
 The EPUB file is attached to this email. You can open it with any EPUB reader.
 
 --
-Sent by Sub-to-Pub Chrome Extension
+Sent by Scribe Chrome Extension
 Convert any article to EPUB format
 ```
 
@@ -206,7 +206,7 @@ Convert any article to EPUB format
 
 ### Project Structure
 ```
-backend.sub-to-pub/
+backend.scribe/
 ├── src/
 │   ├── app.js           # Express app setup
 │   ├── routes/
@@ -237,7 +237,7 @@ SMTP_PORT=587
 SMTP_USER=resend
 SMTP_PASS=re_xxxxxxxxxxxx
 EMAIL_FROM=noreply@xn--the-2na.space
-EMAIL_FROM_NAME=Sub-to-Pub
+EMAIL_FROM_NAME=Scribe
 
 # Rate Limiting
 RATE_LIMIT_WINDOW_MS=3600000  # 1 hour
@@ -279,7 +279,7 @@ const sendEpubEmail = async ({
     from: `${process.env.EMAIL_FROM_NAME} <${process.env.EMAIL_FROM}>`,
     to: recipientEmail,
     cc: ccEmail,
-    subject: `[Sub-to-Pub] ${metadata.title} - EPUB Ready`,
+    subject: `[Scribe] ${metadata.title} - EPUB Ready`,
     html: generateHtmlEmail(metadata),
     text: generateTextEmail(metadata),
     attachments: [{
@@ -332,13 +332,13 @@ sudo npm install -g pm2
 
 # Clone and setup
 git clone [your-repo]
-cd backend.sub-to-pub
+cd backend.scribe
 npm install
 cp .env.example .env
 # Edit .env with your configuration
 
 # Start with PM2
-pm2 start src/app.js --name sub-to-pub-backend
+pm2 start src/app.js --name scribe-backend
 pm2 save
 pm2 startup
 ```
@@ -347,7 +347,7 @@ pm2 startup
 ```nginx
 server {
     listen 80;
-    server_name backend.sub-to-pub.xn--the-2na.space;
+    server_name backend.scribe.xn--the-2na.space;
 
     location / {
         proxy_pass http://localhost:3000;
@@ -372,7 +372,7 @@ server {
 sudo apt install certbot python3-certbot-nginx
 
 # Get SSL certificate
-sudo certbot --nginx -d backend.sub-to-pub.xn--the-2na.space
+sudo certbot --nginx -d backend.scribe.xn--the-2na.space
 ```
 
 ## Monitoring & Logging
@@ -407,7 +407,7 @@ async function sendEpubEmail(epubBlob, metadata) {
   }
   
   try {
-    const response = await fetch('https://backend.sub-to-pub.xn--the-2na.space/api/send-epub', {
+    const response = await fetch('https://backend.scribe.xn--the-2na.space/api/send-epub', {
       method: 'POST',
       body: formData
     });
@@ -431,7 +431,7 @@ async function sendEpubEmail(epubBlob, metadata) {
 ### Manual Testing
 ```bash
 # Test with curl
-curl -X POST https://backend.sub-to-pub.xn--the-2na.space/api/send-epub \
+curl -X POST https://backend.scribe.xn--the-2na.space/api/send-epub \
   -F "epub_file=@test.epub" \
   -F "title=Test Article" \
   -F "recipient_email=test@example.com" \

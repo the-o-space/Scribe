@@ -65,7 +65,7 @@ app.use((err, req, res, next) => {
 // Start server
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`Sub-to-Pub Backend running on port ${PORT}`);
+    console.log(`Scribe Backend running on port ${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 }

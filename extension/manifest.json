@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Sub-to-Pub",
+  "name": "Scribe",
   "version": "1.2.0",
   "description": "Export articles to EPUB format",
   "icons": {

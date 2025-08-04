@@ -1,4 +1,4 @@
-# Sub-to-Pub
+# Scribe
 
 A Chrome extension and backend service for converting Substack articles to EPUB format.
 
@@ -7,7 +7,7 @@ A Chrome extension and backend service for converting Substack articles to EPUB 
 This is a monorepo containing two main components:
 
 ```
-sub-to-pub/
+scribe/
 ├── extension/          # Chrome extension for capturing articles
 ├── backend/            # Email backend service (coming soon)
 ├── docs/               # Shared documentation
@@ -28,7 +28,7 @@ See [backend/README.md](backend/README.md) for backend-specific documentation.
 
 ## Installing extension
 
-1. Download the latest release .zip file from [the-o-space/sub-to-pub/releases](https://github.com/the-o-space/sub-to-pub/releases)
+1. Download the latest release .zip file from [the-o-space/scribe/releases](https://github.com/the-o-space/scribe/releases)
 2. Unzip the file and open your favourite chormium browser
 3. Navigate to `chrome://extensions/`
 4. Enable Developer Mode
@@ -41,8 +41,8 @@ See [backend/README.md](backend/README.md) for backend-specific documentation.
 ### Full Repository Setup
 ```bash
 # Clone the entire repository
-git clone https://github.com/the-o-space/sub-to-pub.git
-cd sub-to-pub
+git clone https://github.com/the-o-space/scribe.git
+cd scribe
 
 # Setup both components
 ./scripts/setup-all.sh
@@ -53,8 +53,8 @@ cd sub-to-pub
 #### Extension Only (Git Sparse Checkout)
 ```bash
 # Clone repository without checking out files
-git clone --no-checkout https://github.com/the-o-space/sub-to-pub.git
-cd sub-to-pub
+git clone --no-checkout https://github.com/the-o-space/scribe.git
+cd scribe
 
 # Enable sparse checkout
 git sparse-checkout init --cone
@@ -69,8 +69,8 @@ git checkout main
 #### Backend Only (Git Sparse Checkout)
 ```bash
 # Clone repository without checking out files
-git clone --no-checkout https://github.com/the-o-space/sub-to-pub.git
-cd sub-to-pub
+git clone --no-checkout https://github.com/the-o-space/scribe.git
+cd scribe
 
 # Enable sparse checkout
 git sparse-checkout init --cone

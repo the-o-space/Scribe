@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Setting up Sub-to-Pub monorepo..."
+echo "Setting up Scribe monorepo..."
 echo ""
 
 # Get the script directory

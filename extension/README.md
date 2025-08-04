@@ -1,6 +1,6 @@
-# Sub-to-Pub Chrome Extension
+# Scribe Chrome Extension
 
-A Chrome extension that converts web articles from Substack and other platforms to EPUB (pub) format for offline reading. Works with Substack, LessWrong, and other platforms using similar markup structures.
+A Chrome extension that converts web articles from Substack and other platforms to EPUB format for offline reading. Works with Substack, LessWrong, and other platforms using similar markup structures.
 
 ## Features
 
@@ -82,7 +82,7 @@ The extension extracts content from web articles by:
 ## File Structure
 
 ```
-Sub-to-Pub/
+Scribe/
 ├── src/                    # Source code (modular)
 │   ├── background/         # Background script modules
 │   │   ├── index.js       # Main background logic

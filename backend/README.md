@@ -1,8 +1,8 @@
-# Sub-to-Pub Email Backend
+# Scribe Email Backend
 
 ## Overview
 
-A lightweight Node.js/Express backend service for the Sub-to-Pub Chrome extension that handles EPUB email delivery using SendGrid's free tier (100 emails/day).
+A lightweight Node.js/Express backend service for the Scribe Chrome extension that handles EPUB email delivery using SendGrid's free tier (100 emails/day).
 
 ## Features
 
@@ -73,7 +73,7 @@ SENDGRID_API_KEY=SG.your-actual-api-key-here
 
 # Email Settings
 EMAIL_FROM=your-verified-sender@domain.com
-EMAIL_FROM_NAME=Sub-to-Pub
+EMAIL_FROM_NAME=Scribe
 ```
 
 ### 4. Run the Server
@@ -138,7 +138,7 @@ sudo npm install -g pm2
 
 2. Start the application:
 ```bash
-pm2 start src/app.js --name sub-to-pub-backend
+pm2 start src/app.js --name scribe-backend
 pm2 save
 pm2 startup
 ```
@@ -146,7 +146,7 @@ pm2 startup
 3. Monitor:
 ```bash
 pm2 status
-pm2 logs sub-to-pub-backend
+pm2 logs scribe-backend
 ```
 
 ## Production Checklist
@@ -173,7 +173,7 @@ pm2 logs sub-to-pub-backend
 
 Check PM2 logs:
 ```bash
-pm2 logs sub-to-pub-backend --lines 100
+pm2 logs scribe-backend --lines 100
 ```
 
 ## Security Considerations

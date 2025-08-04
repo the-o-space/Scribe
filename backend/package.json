@@ -1,7 +1,7 @@
 {
-  "name": "sub-to-pub-backend",
+  "name": "scribe-backend",
   "version": "1.0.0",
-  "description": "Email backend service for Sub-to-Pub Chrome extension - handles EPUB email delivery",
+  "description": "Email backend service for Scribe Chrome extension - handles EPUB email delivery",
   "main": "src/app.js",
   "scripts": {
     "start": "node src/app.js",

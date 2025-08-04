@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Test script for Sub-to-Pub backend email functionality
+ * Test script for Scribe backend email functionality
  * Usage: node test-email.js <recipient-email> [epub-file-path]
  */
 
@@ -15,7 +15,7 @@ const API_URL = process.env.API_URL || 'http://localhost:3000';
 const DEFAULT_EPUB = path.join(__dirname, 'test.epub');
 
 async function testEmailEndpoint(recipientEmail, epubPath) {
-  console.log('Testing Sub-to-Pub Email Backend...\n');
+  console.log('Testing Scribe Email Backend...\n');
   
   // Check if EPUB file exists
   if (!fs.existsSync(epubPath)) {
@@ -30,7 +30,7 @@ async function testEmailEndpoint(recipientEmail, epubPath) {
     filename: path.basename(epubPath),
     contentType: 'application/epub+zip'
   });
-  form.append('title', 'Test Article - Sub-to-Pub Backend Test');
+  form.append('title', 'Test Article - Scribe Backend Test');
   form.append('author', 'Test Author');
   form.append('source_url', 'https://example.com/test-article');
   form.append('recipient_email', recipientEmail);

@@ -51,7 +51,7 @@ const generateHtmlEmail = (metadata) => {
             </ul>
         </div>
         <div class="footer">
-            <p>Sent by Sub-to-Pub Chrome Extension</p>
+            <p>Sent by Scribe Chrome Extension</p>
             <p>Convert any article to EPUB format</p>
         </div>
     </div>
@@ -77,7 +77,7 @@ ${author ? `Author: ${author}\n` : ''}${source_url ? `Source: ${source_url}\n` :
 The EPUB file is attached to this email. You can open it with any EPUB reader.
 
 --
-Sent by Sub-to-Pub Chrome Extension
+Sent by Scribe Chrome Extension
 Convert any article to EPUB format`;
 };
 
@@ -107,10 +107,10 @@ const sendEpubEmail = async ({
     const msg = {
       to: recipientEmail,
       from: {
-        email: process.env.EMAIL_FROM || 'noreply@sub-to-pub.com',
-        name: metadata.sender_name || process.env.EMAIL_FROM_NAME || 'Sub-to-Pub'
+        email: process.env.EMAIL_FROM || 'noreply@scribe.com',
+        name: metadata.sender_name || process.env.EMAIL_FROM_NAME || 'Scribe'
       },
-      subject: `[Sub-to-Pub] ${metadata.title} - EPUB Ready`,
+      subject: `[Scribe] ${metadata.title} - EPUB Ready`,
       text: generateTextEmail(emailMetadata),
       html: generateHtmlEmail(emailMetadata),
       attachments: [

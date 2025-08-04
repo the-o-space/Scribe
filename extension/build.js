@@ -52,7 +52,7 @@ const backgroundBuildOptions = {
   entryPoints: ['src/background/index.js'],
   outfile: 'dist/background.js',
   banner: {
-    js: `// Sub-to-Pub Chrome Extension
+          js: `// Scribe Chrome Extension
 // Import JSZip for Manifest V3 service worker
 importScripts("libs/jszip.min.js");
 `
@@ -65,12 +65,12 @@ const contentBuildOptions = {
   entryPoints: ['src/content/index.js'],
   outfile: 'dist/content.js',
   banner: {
-    js: '// Sub-to-Pub Chrome Extension\n'
+          js: '// Scribe Chrome Extension\n'
   }
 };
 
 async function build() {
-  console.log('🔨 Building Sub-to-Pub Chrome Extension...\n');
+  console.log('🔨 Building Scribe Chrome Extension...\n');
   
   try {
     // Copy static files first

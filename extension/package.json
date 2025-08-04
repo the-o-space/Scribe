@@ -1,5 +1,5 @@
 {
-  "name": "sub-to-pub-extension",
+  "name": "scribe-extension",
   "version": "1.2.0",
   "description": "Chrome extension for converting articles to EPUB format",
   "private": true,

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# Sub-to-Pub Backend Deployment Script
+# Scribe Backend Deployment Script
 # This script helps deploy the backend to a production server
 
 set -e
 
-echo "🚀 Sub-to-Pub Backend Deployment"
+echo "🚀 Scribe Backend Deployment"
 echo "================================"
 
 # Check if .env exists
@@ -28,11 +28,11 @@ npm ci --production
 
 # Stop existing PM2 process if running
 echo "🛑 Stopping existing process..."
-pm2 stop sub-to-pub-backend 2>/dev/null || true
+pm2 stop scribe-backend 2>/dev/null || true
 
 # Start the application
 echo "🚀 Starting application..."
-pm2 start src/app.js --name sub-to-pub-backend --env production
+pm2 start src/app.js --name scribe-backend --env production
 
 # Save PM2 configuration
 echo "💾 Saving PM2 configuration..."
@@ -40,15 +40,15 @@ pm2 save
 
 # Show status
 echo "📊 Application status:"
-pm2 status sub-to-pub-backend
+pm2 status scribe-backend
 
 echo ""
 echo "✅ Deployment complete!"
 echo ""
 echo "Useful commands:"
-echo "- View logs: pm2 logs sub-to-pub-backend"
-echo "- Restart: pm2 restart sub-to-pub-backend"
-echo "- Stop: pm2 stop sub-to-pub-backend"
+echo "- View logs: pm2 logs scribe-backend"
+echo "- Restart: pm2 restart scribe-backend"
+echo "- Stop: pm2 stop scribe-backend"
 echo "- Monitor: pm2 monit"
 echo ""
 echo "Don't forget to:"
